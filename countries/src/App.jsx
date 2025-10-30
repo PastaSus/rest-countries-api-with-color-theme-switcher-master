@@ -1,10 +1,15 @@
-import { useState } from "react";
-
-// import viteLogo from '/vite.svg'
-// import './App.css'
+import Header from "./components/Header";
+import Controls from "./components/Controls/Controls";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Header></Header>
+      <main>
+        <Controls></Controls>
+      </main>
+    </>
+  );
 }
 
 export default App;
