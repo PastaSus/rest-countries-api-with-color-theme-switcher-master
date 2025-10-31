@@ -4,7 +4,7 @@ function Header() {
       <h2 className="m-0 text-lg">Where in the world?</h2>
       <div className="flex items-center">
         {/* <img src="" alt="" /> */}
-        <span>Dark Mode</span>
+        <span className="font-semibold">Dark Mode</span>
       </div>
     </header>
   );

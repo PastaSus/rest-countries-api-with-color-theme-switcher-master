@@ -1,18 +1,34 @@
+import SearchIcon from "./../../assets/search.svg";
+
 function SearchCountry() {
   return (
-    <search>
-      <label for="country-search" className="sr-only">
+    <search className="w-full rounded-md px-8 py-4 shadow-lg">
+      <label htmlFor="country-search" className="sr-only">
         Search for a country
       </label>
-      <div class="search-wrapper">
-        <button type="button" aria-label="Search">
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
-            <path d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" />
+      <div className="search-wrapper flex items-center gap-4">
+        <button
+          type="button"
+          aria-label="Search"
+          className="flex cursor-pointer items-center border-none bg-transparent p-0"
+        >
+          {/* <img src={SearchIcon} alt="" /> */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="hsl(0, 0%, 50%)"
+            viewBox="0 0 512 512"
+            width="20"
+            height="20"
+            focusable="false"
+            aria-hidden="true"
+          >
+            <path d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0034.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 00327.3 362.6l94.09 94.09a25 25 0 0035.3-35.3zM97.92 222.72a124.8 124.8 0 11124.8 124.8 124.95 124.95 0 01-124.8-124.8z" />
           </svg>
         </button>
         <input
           type="search"
           id="country-search"
+          className="w-full border-none p-0"
           placeholder="Search for a country..."
         />
       </div>

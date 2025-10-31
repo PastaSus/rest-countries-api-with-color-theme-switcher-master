@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Header></Header>
-      <main>
+      <main className="px-4 py-8">
         <Controls></Controls>
       </main>
     </>
