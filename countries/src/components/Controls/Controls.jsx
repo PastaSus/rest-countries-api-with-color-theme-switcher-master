@@ -1,11 +1,11 @@
 import SearchCountry from "./SearchCountry";
 import FilterCountry from "./FilterCountry";
 
-function Controls() {
+function Controls({ onRegionChange, onSearchChange }) {
   return (
     <form className="flex flex-col gap-10">
-      <SearchCountry></SearchCountry>
-      <FilterCountry></FilterCountry>
+      <SearchCountry onSearchChange={onSearchChange}></SearchCountry>
+      <FilterCountry onRegionChange={onRegionChange}></FilterCountry>
     </form>
   );
 }
