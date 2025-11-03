@@ -20,7 +20,7 @@ function CountryList({ filterRegion, searchQuery }) {
       </h2>
       <ul className="m-0 grid list-none gap-10 p-0 md:grid-cols-2 xl:grid-cols-4">
         {filteredCountries.map((country) => (
-          <li className="rounded-md shadow-md" key={country.name}>
+          <li className="rounded-md bg-element shadow-md" key={country.name}>
             <CountryCard country={country}></CountryCard>
           </li>
         ))}

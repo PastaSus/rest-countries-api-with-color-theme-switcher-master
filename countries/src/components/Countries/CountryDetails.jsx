@@ -12,7 +12,7 @@ function CountryDetails() {
   if (!country) {
     return (
       <div className="px-4 py-8">
-        <Link to="/" className="mb-6 inline-block text-sm">
+        <Link to="/" className="mb-6 inline-block bg-bg text-sm">
           ← Back
         </Link>
         <p>Country not found.</p>
@@ -48,12 +48,30 @@ function CountryDetails() {
     <>
       <Header />
 
-      <div className="px-4 py-8 md:mx-auto md:max-w-xl md:px-0 xl:max-w-7xl">
+      <div className="px-4 py-8 md:mx-auto md:max-w-xl md:px-0 xl:max-w-7xl dark:bg-(--Blue-950)">
         <Link
           to="/"
-          className="mb-6 inline-block rounded-sm bg-white px-6 py-2 text-(--Grey-950) no-underline shadow-md dark:bg-slate-800"
+          className="mb-6 inline-flex items-start justify-items-start gap-3 rounded-sm bg-element px-8 py-2 text-text no-underline shadow-md"
         >
-          ← Back
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="ionicon"
+            viewBox="0 0 512 512"
+            width={24}
+            height={24}
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="48"
+              d="M244 400L100 256l144-144M120 256h292"
+            />
+          </svg>
+          <span>Back</span>
         </Link>
 
         <div className="mt-8 xl:grid xl:grid-cols-2 xl:items-center xl:gap-20">
@@ -66,12 +84,12 @@ function CountryDetails() {
           </div>
 
           <div className="">
-            <h1 className="mb-4 text-2xl font-bold xl:text-3xl xl:font-extrabold">
+            <h1 className="mb-4 text-2xl font-bold text-text xl:text-3xl xl:font-extrabold">
               {countryName}
             </h1>
 
             <div className="grid gap-8 md:grid-cols-2">
-              <div className="space-y-3">
+              <div className="space-y-3 text-text">
                 <p>
                   <span className="font-semibold">Native Name:</span>{" "}
                   {country.nativeName ||
@@ -99,7 +117,7 @@ function CountryDetails() {
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-3 text-text">
                 <p>
                   <span className="font-semibold">Top Level Domain:</span>{" "}
                   {Array.isArray(country.topLevelDomain)
@@ -122,7 +140,7 @@ function CountryDetails() {
             </div>
 
             <div className="mt-8 xl:flex xl:items-center">
-              <h2 className="mb-3 font-semibold xl:text-xl">
+              <h2 className="mb-3 font-semibold text-text xl:text-xl">
                 Border Countries:
               </h2>
               <div className="flex flex-wrap gap-3">
@@ -131,13 +149,13 @@ function CountryDetails() {
                     <Link
                       key={b.name}
                       to={`/country/${slugify(b.name)}`}
-                      className="rounded-sm bg-white px-4 py-2 text-(--Grey-950) no-underline shadow-md dark:bg-slate-800"
+                      className="rounded-sm bg-white px-4 py-2 text-text no-underline shadow-md dark:bg-(--Blue-900)"
                     >
                       {b.name}
                     </Link>
                   ))
                 ) : (
-                  <span>None</span>
+                  <span className="text-text">None</span>
                 )}
               </div>
             </div>

@@ -9,13 +9,13 @@ function CountryCard({ country }) {
   return (
     <Link
       to={`/country/${slugify(countryName)}`}
-      className="block text-(--Grey-950) no-underline"
+      className="block text-text no-underline"
     >
       <article className="">
         <img
           src={flagSrc}
           alt={`${countryName} flag`}
-          className="rounded-t-md"
+          className="rounded-t-md shadow-sm"
         ></img>
         <div className="px-6 pt-3 pb-12">
           <h2 className="font-bold">{countryName}</h2>

@@ -7,11 +7,12 @@ import { useState } from "react";
 function App() {
   const [region, setRegion] = useState("");
   const [search, setSearch] = useState("");
+  // const [darkMode, setDarkMode] = useState(false);
 
   return (
     <>
       <Header />
-      <main className="px-4 py-8">
+      <main className="px-4 py-8 text-text">
         <Controls
           onRegionChange={setRegion}
           onSearchChange={setSearch}

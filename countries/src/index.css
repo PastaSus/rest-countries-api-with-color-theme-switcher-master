@@ -1,4 +1,5 @@
 @layer theme, base, components, utilities;
+/* @import "tailwindcss"; */
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 
@@ -44,8 +45,8 @@
     font-family: "Nunito", sans-serif;
     margin: 0;
     /* font-size: ; */
-    /* color: var(--Wenge-Brown);
-  background-color: var(--Eggshell); */
+
+    background-color: var(--color-bg);
   }
 
   /* Set shorter line heights on headings and interactive elements */
@@ -98,14 +99,53 @@
   :target {
     scroll-margin-block: 5ex;
   }
+}
 
-  :root {
-    /* ### Neutral */
-    --Blue-900: hsl(209, 23%, 22%);
-    --Blue-950: hsl(207, 26%, 17%);
-    --Grey-950: hsl(200, 15%, 8%);
-    --Grey-400: hsl(0, 0%, 50%);
-    --Grey-50: hsl(0, 0%, 99%);
-    --White: hsl(0, 100%, 100%);
-  }
+/* 
+- Blue 900 (Dark Mode Elements): hsl(209, 23%, 22%)
+- Blue 950 (Dark Mode Background): hsl(207, 26%, 17%)
+- Grey 950 (Light Mode Text): hsl(200, 15%, 8%)
+- Grey 400 (Light Mode Input): hsl(0, 0%, 50%)
+- Grey 50 (Light Mode Background): hsl(0, 0%, 99%)
+- White (Dark Mode Text & Light Mode Elements): hsl(0, 100%, 100%) 
+*/
+@theme {
+  /* Light mode */
+  --Grey-950: hsl(200, 15%, 8%); /* Text */
+  --Grey-400: hsl(0, 0%, 50%); /* Input / secondary elements */
+  --Grey-50: hsl(0, 0%, 99%); /* Background */
+  --White: hsl(0, 100%, 100%); /* Elements / accents */
+
+  /* Dark mode fallback (optional if you use Tailwind dark: classes) */
+  --Blue-900: hsl(209, 23%, 22%); /* Elements */
+  --Blue-950: hsl(207, 26%, 17%); /* Background */
+
+  /* Tailwind v4 format - just the numbers */
+  --color-app-blue-dark: hsl(209, 23%, 22%); /* your --Blue-900 */
+  --color-app-blue-darker: hsl(207 26% 17%); /* your --Blue-950 */
+  --color-app-grey-dark: hsl(200 15% 8%); /* your --Grey-950 */
+  --color-app-grey: hsl(0 0% 50%); /* your --Grey-400 */
+  --color-app-grey-light: hsl(0 0% 99%); /* your --Grey-50 */
+  --color-app-white: hsl(0 100% 100%); /* your --White */
+
+  /* Light mode colors */
+  --color-bg: hsl(0 0% 99%); /* Grey-50 */
+  --color-text: hsl(200 15% 8%); /* Grey-950 */
+  --color-element: hsl(0 100% 100%); /* White */
+  --color-input: hsl(0 0% 50%); /* Grey-400 */
+  --color-fill: transparent;
+  --color-search: hsl(0, 0%, 50%);
+}
+
+/* 🌑 Dark Mode (Manual override example) */
+/* This is optional if you use Tailwind's built-in dark: prefix */
+.dark {
+  /* Override the generic variables for the 'dark' theme */
+  /* Override the generic variables with the dark theme values */
+  --color-bg: hsl(207 26% 17%);
+  --color-text: hsl(0 100% 100%);
+  --color-element: hsl(209 23% 22%);
+  --color-input: hsl(200 15% 8%);
+  --color-fill: hsl(0 100% 100%);
+  --color-search: hsl(0 100% 100%);
 }

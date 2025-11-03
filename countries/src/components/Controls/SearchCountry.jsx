@@ -1,16 +1,16 @@
 function SearchCountry({ onSearchChange }) {
   return (
-    <search className="w-full rounded-md px-8 py-4 shadow-lg xl:w-1/3">
+    <search className="w-full rounded-md bg-element px-8 py-4 text-text shadow-lg xl:w-1/3">
       <label htmlFor="country-search" className="sr-only">
         Search for a country
       </label>
       <div className="search-wrapper flex items-center gap-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="hsl(0, 0%, 50%)"
           viewBox="0 0 512 512"
           width="20"
           height="20"
+          className="fill-search"
           focusable="false"
           aria-hidden="true"
         >
@@ -21,7 +21,7 @@ function SearchCountry({ onSearchChange }) {
           type="search"
           aria-label="Seach country"
           id="country-search"
-          className="w-full border-none p-0"
+          className="w-full border-none bg-element p-0 text-text placeholder:text-text"
           placeholder="Search for a country..."
           onChange={(e) => onSearchChange(e.target.value)}
         />
