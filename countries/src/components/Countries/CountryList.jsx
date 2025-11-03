@@ -13,7 +13,7 @@ function CountryList({ filterRegion, searchQuery }) {
   return (
     <section
       aria-labelledby="country-list-heading"
-      className="mx-auto mt-8 max-w-xs md:max-w-xl xl:max-w-7xl"
+      className="mt-8 md:mx-auto md:max-w-xl xl:max-w-7xl"
     >
       <h2 id="country-list-heading" className="sr-only">
         List of Countries

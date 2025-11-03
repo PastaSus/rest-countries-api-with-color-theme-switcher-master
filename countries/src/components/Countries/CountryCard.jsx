@@ -28,7 +28,7 @@ function CountryCard({ country }) {
               <span className="font-semibold">Region:</span> {country.region}
             </p>
             <p className="mt-2">
-              <span className="font-semibold">Capital:</span>
+              <span className="font-semibold">Capital: </span>
               {/* {country.capital} */}
               {Array.isArray(country.capital)
                 ? country.capital[0]
