@@ -13,14 +13,14 @@ function CountryList({ filterRegion, searchQuery }) {
   return (
     <section
       aria-labelledby="country-list-heading"
-      className="mx-auto mt-8 max-w-xs"
+      className="mx-auto mt-8 max-w-xs md:max-w-xl xl:max-w-7xl"
     >
       <h2 id="country-list-heading" className="sr-only">
         List of Countries
       </h2>
-      <ul className="m-0 grid list-none gap-10 p-0">
+      <ul className="m-0 grid list-none gap-10 p-0 md:grid-cols-2 xl:grid-cols-4">
         {filteredCountries.map((country) => (
-          <li key={country.name}>
+          <li className="rounded-md shadow-md" key={country.name}>
             <CountryCard country={country}></CountryCard>
           </li>
         ))}

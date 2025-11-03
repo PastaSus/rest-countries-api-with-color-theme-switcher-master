@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <main className="px-4 py-8">
         <Controls
           onRegionChange={setRegion}

@@ -1,6 +1,6 @@
 function SearchCountry({ onSearchChange }) {
   return (
-    <search className="w-full rounded-md px-8 py-4 shadow-lg">
+    <search className="w-full rounded-md px-8 py-4 shadow-lg xl:w-1/3">
       <label htmlFor="country-search" className="sr-only">
         Search for a country
       </label>
