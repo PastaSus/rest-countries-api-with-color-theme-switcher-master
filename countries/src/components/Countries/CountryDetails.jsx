@@ -44,6 +44,10 @@ function CountryDetails() {
     .map((code) => data.find((c) => (c.alpha3Code || c.cca3) === code))
     .filter(Boolean);
 
+  const capital = Array.isArray(country.capital)
+    ? country.capital[0]
+    : country.capital;
+
   return (
     <>
       <Header />
@@ -111,9 +115,7 @@ function CountryDetails() {
                 </p>
                 <p>
                   <span className="font-semibold">Capital: </span>{" "}
-                  {Array.isArray(country.capital)
-                    ? country.capital[0]
-                    : country.capital}
+                  {capital || "No capital"}
                 </p>
               </div>
 
