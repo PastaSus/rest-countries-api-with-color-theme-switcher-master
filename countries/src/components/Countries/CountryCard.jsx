@@ -6,6 +6,10 @@ function CountryCard({ country }) {
   const flagSrc = country.flags?.svg || country.flag || "";
   const countryName = country.name || country.name?.common || "";
 
+  const capital = Array.isArray(country.capital)
+    ? country.capital[0]
+    : country.capital;
+
   return (
     <Link
       to={`/country/${slugify(countryName)}`}
@@ -31,9 +35,7 @@ function CountryCard({ country }) {
             <p className="mt-2">
               <span className="font-semibold">Capital: </span>
               {/* {country.capital} */}
-              {Array.isArray(country.capital)
-                ? country.capital[0]
-                : country.capital}
+              {capital || "No capital"}
             </p>
           </div>
         </div>
