@@ -21,7 +21,7 @@ function SearchCountry({ onSearchChange }) {
           type="search"
           aria-label="Seach country"
           id="country-search"
-          className="w-full border-none bg-element p-0 text-text placeholder:text-text"
+          className="w-full border-none bg-element p-0 text-text placeholder:text-input"
           placeholder="Search for a country..."
           onChange={(e) => onSearchChange(e.target.value)}
         />
