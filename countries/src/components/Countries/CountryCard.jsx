@@ -15,6 +15,7 @@ function CountryCard({ country }) {
         <img
           src={flagSrc}
           alt={`${countryName} flag`}
+          loading="lazy"
           className="rounded-t-md shadow-sm"
         ></img>
         <div className="px-6 pt-3 pb-12">
