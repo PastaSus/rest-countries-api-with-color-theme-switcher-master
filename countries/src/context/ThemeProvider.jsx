@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { ThemeContext } from "./ThemeContext"; // <- Import the Context object
 
-export const ThemeProvider = ({ children }) => {
+export function ThemeProvider({ children }) {
   // ... (state and toggleDarkMode function are correct) ...
 
   const [darkMode, setDarkMode] = useState(() => {
@@ -28,7 +28,5 @@ export const ThemeProvider = ({ children }) => {
   const value = { darkMode, toggleDarkMode };
 
   // 🟢 FIXED: Use ThemeContext.Provider
-  return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
-  );
-};
+  return <ThemeContext value={value}>{children}</ThemeContext>;
+}
