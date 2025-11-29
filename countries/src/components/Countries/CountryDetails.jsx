@@ -151,7 +151,7 @@ function CountryDetails() {
                     <Link
                       key={b.name}
                       to={`/country/${slugify(b.name)}`}
-                      className="rounded-sm bg-white px-4 py-2 text-text no-underline shadow-md dark:bg-(--Blue-900)"
+                      className="rounded-sm bg-link px-4 py-2 text-text no-underline shadow-md"
                     >
                       {b.name}
                     </Link>

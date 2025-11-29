@@ -7,6 +7,7 @@ import { useState } from "react";
 function App() {
   const [region, setRegion] = useState("");
   const [search, setSearch] = useState("");
+
   // const [darkMode, setDarkMode] = useState(false);
 
   return (
@@ -16,6 +17,7 @@ function App() {
         <Controls
           onRegionChange={setRegion}
           onSearchChange={setSearch}
+          selectedRegion={region}
         ></Controls>
         <CountryList filterRegion={region} searchQuery={search}></CountryList>
       </main>

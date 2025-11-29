@@ -135,6 +135,7 @@
   --color-input: hsl(0 0% 50%); /* Grey-400 */
   --color-fill: transparent;
   --color-search: hsl(0, 0%, 50%);
+  --color-link: hsl(0 0% 99%);
 }
 
 /* 🌑 Dark Mode (Manual override example) */
@@ -145,7 +146,8 @@
   --color-bg: hsl(207 26% 17%);
   --color-text: hsl(0 100% 100%);
   --color-element: hsl(209 23% 22%);
-  --color-input: hsl(200 15% 8%);
+  --color-input: hsl(0 100% 100%);
   --color-fill: hsl(0 100% 100%);
   --color-search: hsl(0 100% 100%);
+  --color-link: hsl(209 23% 22%);
 }

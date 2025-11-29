@@ -1,4 +1,4 @@
-function FilterCountry({ onRegionChange }) {
+function FilterCountry({ onRegionChange, selectedRegion }) {
   const handleOpenSelect = () => {
     document.getElementById("region-filter")?.showPicker?.(); // modern browsers
   };
@@ -15,11 +15,10 @@ function FilterCountry({ onRegionChange }) {
         id="region-filter"
         name="region"
         className="select-country appearance-none border-0 bg-element p-0 text-text"
+        value={selectedRegion}
         onChange={(e) => onRegionChange(e.target.value)}
       >
-        <option defaultValue={""} selected disabled hidden>
-          Filter by Region
-        </option>
+        <option value="">Filter by Region</option>
         <option value="Africa">Africa</option>
         <option value="Americas">Americas</option>
         <option value="Asia">Asia</option>
