@@ -1,13 +1,9 @@
-import { Link, useParams } from "react-router-dom";
-import data from "./../../assets/data.json";
-import slugify from "../../utils/slugify";
+import { Link, useLoaderData } from "react-router-dom";
+// import slugify from "../../utils/slugify";
 import Header from "../Header";
 
 function CountryDetails() {
-  const { slug } = useParams();
-
-  // find country by slug
-  const country = data.find((c) => slugify(c.name) === slug);
+  const { country, allCountries } = useLoaderData();
 
   if (!country) {
     return (
@@ -21,32 +17,19 @@ function CountryDetails() {
   }
 
   const flagSrc = country.flags?.svg || country.flag || "";
-  const countryName = country.name || country.name?.common || "";
-
-  // languages: array of objects or array of strings
-  const languages =
-    country.languages && Array.isArray(country.languages)
-      ? country.languages.map((l) => (l.name ? l.name : l))
-      : country.languages && typeof country.languages === "object"
-        ? Object.values(country.languages)
-        : [];
-
-  // currencies: array of objects or object
-  const currencies =
-    country.currencies && Array.isArray(country.currencies)
-      ? country.currencies.map((c) => c.name)
-      : country.currencies && typeof country.currencies === "object"
-        ? Object.values(country.currencies).map((c) => c.name || c)
-        : [];
-
-  // border countries: find by alpha3Code
-  const borderCountries = (country.borders || [])
-    .map((code) => data.find((c) => (c.alpha3Code || c.cca3) === code))
-    .filter(Boolean);
-
+  const countryName = country.name?.common || country.name || "";
   const capital = Array.isArray(country.capital)
     ? country.capital[0]
     : country.capital;
+
+  const languages = country.languages ? Object.values(country.languages) : [];
+  const currencies = country.currencies
+    ? Object.values(country.currencies).map((c) => c.name || c)
+    : [];
+
+  const borderCountries = (country.borders || [])
+    .map((code) => allCountries.find((c) => c.cca3 === code))
+    .filter(Boolean);
 
   return (
     <>
@@ -96,10 +79,13 @@ function CountryDetails() {
               <div className="space-y-3 text-text">
                 <p>
                   <span className="font-semibold">Native Name:</span>{" "}
-                  {country.nativeName ||
+                  {/* {country.nativeName ||
                     country.nativeName ||
                     country.altSpellings?.[1] ||
-                    countryName}
+                    countryName} */}
+                  {country.name?.nativeName
+                    ? Object.values(country.name.nativeName)[0].common
+                    : countryName}
                 </p>
                 <p>
                   <span className="font-semibold">Population:</span>{" "}
@@ -111,7 +97,7 @@ function CountryDetails() {
                 </p>
                 <p>
                   <span className="font-semibold">Sub Region:</span>{" "}
-                  {country.subregion}
+                  {country.subregion || "No subregion"}
                 </p>
                 <p>
                   <span className="font-semibold">Capital: </span>{" "}
@@ -122,21 +108,17 @@ function CountryDetails() {
               <div className="space-y-3 text-text">
                 <p>
                   <span className="font-semibold">Top Level Domain:</span>{" "}
-                  {Array.isArray(country.topLevelDomain)
-                    ? country.topLevelDomain.join(", ")
-                    : country.topLevelDomain}
+                  {Array.isArray(country.tld)
+                    ? country.tld.join(", ")
+                    : country.tld}
                 </p>
                 <p>
                   <span className="font-semibold">Currencies:</span>{" "}
-                  {currencies.length
-                    ? currencies.join(", ")
-                    : country.currencies?.[0]?.name || "—"}
+                  {currencies.length ? currencies.join(", ") : "—"}
                 </p>
                 <p>
                   <span className="font-semibold">Languages:</span>{" "}
-                  {languages.length
-                    ? languages.join(", ")
-                    : country.languages || "—"}
+                  {languages.length ? languages.join(", ") : "—"}
                 </p>
               </div>
             </div>
@@ -149,11 +131,14 @@ function CountryDetails() {
                 {borderCountries.length ? (
                   borderCountries.map((b) => (
                     <Link
-                      key={b.name}
-                      to={`/country/${slugify(b.name)}`}
+                      // key={b.name}
+                      key={b.cca3}
+                      // to={`/country/${slugify(b.name)}`}
+                      to={`/country/${b.cca3}`}
                       className="rounded-sm bg-link px-4 py-2 text-text no-underline shadow-md"
                     >
-                      {b.name}
+                      {/* {b.name} */}
+                      {b.name?.common || b.name}
                     </Link>
                   ))
                 ) : (
@@ -168,4 +153,19 @@ function CountryDetails() {
   );
 }
 
-export default CountryDetails;
+// Loader
+const countryLoader = async ({ params }) => {
+  const res = await fetch(
+    "https://restcountries.com/v3.1/all?fields=name,cca3,flags,capital,population,region,subregion,tld,currencies,languages",
+  );
+  if (!res.ok) throw new Error("Failed to fetch countries");
+  const allCountries = await res.json();
+
+  // Use params.cca3 (unique country code)
+  const country = allCountries.find((c) => c.cca3 === params.cca3);
+  if (!country) throw new Response("Not Found", { status: 404 });
+
+  return { country, allCountries };
+};
+
+export { CountryDetails as default, countryLoader };

@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin-block-end: 0;
+  }
+
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+  }
+
+  body {
+    line-height: 1.5;
+    min-height: 100vh;
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    background-color: var(--color-bg);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+  }
+
+  img,
+  picture {
+    max-width: 100%;
+    display: block;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
+
+  :target {
+    scroll-margin-block: 5ex;
+  }
+}
+
+@theme {
+  --Grey-950: hsl(200, 15%, 8%);
+  --Grey-400: hsl(0, 0%, 50%);
+  --Grey-50: hsl(0, 0%, 99%);
+  --White: hsl(0, 100%, 100%);
+  --Blue-900: hsl(209, 23%, 22%);
+  --Blue-950: hsl(207, 26%, 17%);
+
+  --color-app-blue-dark: hsl(209, 23%, 22%);
+  --color-app-blue-darker: hsl(207 26% 17%);
+  --color-app-grey-dark: hsl(200 15% 8%);
+  --color-app-grey: hsl(0 0% 50%);
+  --color-app-grey-light: hsl(0 0% 99%);
+  --color-app-white: hsl(0 100% 100%);
+
+  --color-bg: hsl(0 0% 99%);
+  --color-text: hsl(200 15% 8%);
+  --color-element: hsl(0 100% 100%);
+  --color-input: hsl(0 0% 50%);
+  --color-fill: transparent;
+  --color-search: hsl(0, 0%, 50%);
+  --color-link: hsl(0 0% 99%);
+}
+
+.dark {
+  --color-bg: hsl(207 26% 17%);
+  --color-text: hsl(0 100% 100%);
+  --color-element: hsl(209 23% 22%);
+  --color-input: hsl(0 100% 100%);
+  --color-fill: hsl(0 100% 100%);
+  --color-search: hsl(0 100% 100%);
+  --color-link: hsl(209 23% 22%);
+}

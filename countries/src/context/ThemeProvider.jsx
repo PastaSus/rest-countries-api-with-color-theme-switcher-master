@@ -28,5 +28,7 @@ export function ThemeProvider({ children }) {
   const value = { darkMode, toggleDarkMode };
 
   // 🟢 FIXED: Use ThemeContext.Provider
-  return <ThemeContext value={value}>{children}</ThemeContext>;
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
 }
