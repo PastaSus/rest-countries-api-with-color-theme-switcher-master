@@ -3,7 +3,7 @@ import Controls from "./components/Controls/Controls";
 import { getStaticCountries } from "./utils/countries-api";
 
 export default async function Home() {
-  const countries = getStaticCountries();
+  const countries = await getStaticCountries();
 
   return (
     <main className="px-4 py-8 text-text">

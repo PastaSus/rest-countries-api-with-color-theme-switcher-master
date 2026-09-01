@@ -67,7 +67,12 @@ function normalizeV2Country(c) {
   };
 }
 
-export function getStaticCountries() {
+export async function getStaticCountries() {
+  try {
+    const data = await apiFetch(`${API_BASE}?limit=300`);
+    const objects = data.data?.objects || data;
+    if (Array.isArray(objects) && objects.length) return objects.map(normalizeV5Country);
+  } catch {}
   return staticData.map(normalizeV2Country);
 }
 
