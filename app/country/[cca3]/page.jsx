@@ -1,34 +1,14 @@
 import Link from "next/link";
-
-async function getCountry(cca3) {
-  const res = await fetch(
-    `https://restcountries.com/v3.1/alpha/${cca3}?fields=name,cca3,flags,capital,population,region,subregion,tld,currencies,languages,borders`,
-    { next: { revalidate: 86400 } },
-  );
-  if (!res.ok) return null;
-  const data = await res.json();
-  return Array.isArray(data) ? data[0] : data;
-}
-
-async function getBorderCountries(borders = []) {
-  if (!borders.length) return [];
-  const codes = borders.join(",");
-  const res = await fetch(
-    `https://restcountries.com/v3.1/alpha?codes=${codes}&fields=name,cca3`,
-    { next: { revalidate: 86400 } },
-  );
-  if (!res.ok) return [];
-  return res.json();
-}
+import { getCountryByCode, getBorderCountries } from "../../utils/countries-api";
 
 export default async function CountryDetails({ params }) {
   const { cca3 } = await params;
-  const country = await getCountry(cca3);
+  const country = await getCountryByCode(cca3);
 
   if (!country) {
     return (
       <div className="px-4 py-8">
-        <Link to="/" className="mb-6 inline-block text-sm">
+        <Link href="/" className="mb-6 inline-block text-sm">
           ← Back
         </Link>
         <p>Country not found.</p>
